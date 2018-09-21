@@ -1,0 +1,69 @@
+---
+title: "p8105_hw1_er2867.git"
+author: "Elliot"
+date: "September 21, 2018"
+output: github_document
+---
+```{r}
+library(tidyverse)
+```
+
+```{r}
+##Problem 1
+##A random sample of size 10 from a uniform[0, 5] distribution
+prblm1 <-data.frame
+  set.seed (504123)
+  x=(rdunif(10, 5, 0))
+  table(x)
+#A logical vector indicating whether elements of the sample are greater than 2
+  z <- "logicalvec"  
+  is.logical(z)
+   as.logical (x[x > 2])
+# A (length-10) character vector
+ a <- "abcdefghij"
+ is.character(a)
+ nchar (a)
+#A (length-10) factor vector
+ degree <- factor(c("mailmanmph"))
+# Try to take the mean of each variable in your dataframe
+  mean (x)
+  mean (degree)
+  mean (z)
+  mean (a)
+#Only the mean of x and z can be taken, as they are the only numeric    #variables
+#Write a code chunk that applies the as.numeric function to the        logical, character, and factor variables (please show this chunk     but not the output)
+  as.numeric (degree)
+  as.numeric (a)
+  as.numeric (z)
+#convert your character variable from character to factor to numeric; similarly, convert your factor variable from factor to character to numeric. 
+```
+```{r}
+##Problem 2
+prblm2 <-data.frame
+#x: a random sample of size 1000 from a standard Normal distribution
+  set.seed (1234)
+  x <- rnorm(1000)
+#y: a random sample of size 1000 from a standard Normal distribution
+  y <- rnorm(1000)
+#z: A logical vector indicating whether the x + y > 0
+  z <- "logicalvec"  
+  is.logical(z)
+  logical (length = 0)
+  as.logical(x + y > 0)
+#A numeric vector created by coercing the above logical vector
+    as.numeric (x + y > 0)
+#A factor vector created by coercing the above logical vector
+  as.factor(x + y > 0)
+#size of dataset
+  dataset1 <- data.frame(x,y, rep = TRUE)
+  dim (dataset)
+# the mean and median of x
+  mean(x)
+  median (x)
+#Make a scatterplot of y vs x 
+ggplot(dataset1, aes(x = x, y = y)) + geom_point()
+
+
+
+```
+
