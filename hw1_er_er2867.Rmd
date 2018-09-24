@@ -24,12 +24,11 @@ prblm1 <-data.frame
    as.logical (rndmsmpl > 2)
    
 # A (length-10) character vector
- charvect <- "abcdefghij"
+ charvect <- "1,2,3,4,5,6,7,8,9,0"
  is.character(charvect)
- nchar (charvect)
- 
+
 #A (length-10) factor vector
- factorvec <- factor(c("jihgfedcba"))
+ factorvec <- factor(c("1,2,3,4,5,6,7,8,9,0"))
  factorvec
 
  # Try to take the mean of each variable in your dataframe
@@ -48,11 +47,9 @@ prblm1 <-data.frame
   grtr2num <-as.numeric (grtr2)
   
   charvectnum <-as.numeric (charvect) 
-  
-  factorvecnum <-as.numeric (factorvec)  
-`````
  
-```{r}
+  factorvecnum <-as.numeric (factorvec)  
+
 #convert your character variable from character to factor to numeric; similarly, convert your factor variable from factor to character to numeric. 
   charvec_factor <- as.factor(charvect)
   charvect_factornum <-as.numeric (charvec_factor) 
@@ -71,7 +68,54 @@ prblm2 <-data.frame
 #x: a random sample of size 1000 from a standard Normal distribution
   set.seed (1234)
   x <- rnorm(1000)
+
 #y: a random sample of size 1000 from a standard Normal distribution
-  y <- rnorm(1000)
+    set.seed (4321)
+    y <- rnorm(1000)
+       
+#A logical vector indicating whether the x + y > 0
+  new_logvec <- as.logical(x + y > 0)  
+  
+#A numeric vector created by coercing the above logical vector
+ new_logvec_num <- as.numeric (new_logvec)
+ 
+# A factor vector created by coercing the above logical vector
+ new_logvec_num_fctr <-as.factor(new_logvec_num)
+
+# size of dataset
+  dataset1 <- data.frame(x,y, rep = TRUE)
+  dim (dataset1) 
+  
+# the mean and median of x
+  mean(x)
+  median (x)  
+  
+# proportion of cases for which the logical vector is TRUE 
+  table(new_logvec)
+  
+#scatterplot of x and y  
+  newdf <- data.frame(x,y,new_logvec)
+  
+  library (ggplot2)
+  ggplot(data = newdf, aes(x=x,y=y, color=new_logvec)) +       geom_point()
+
+# Second scatterplot - numeric
+  newdf_num <- data.frame(x,y,new_logvec_num)
+  
+  library (ggplot2)
+  ggplot(data = newdf, aes(x=x,y=y, color=new_logvec_num)) +       geom_point()
+  
+# Third scatterplot - factor
+  newdf_fctr <- data.frame(x,y,new_logvec_num_fctr)
+  
+  library (ggplot2)
+  ggplot(data = newdf, aes(x=x,y=y, color=new_logvec_num_fctr)) +       geom_point()
+  
+#Saving first scatterplot
+ library (ggplot2)
+  ggplot(data = newdf, aes(x=x,y=y, color=new_logvec)) +            geom_point()
+  
+  ggsave("p8105_hw1_er2867_plot.jpg")
+
 ```
 
