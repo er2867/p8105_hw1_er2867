@@ -11,59 +11,67 @@ library(tidyverse)
 ```{r}
 ##Problem 1
 ##A random sample of size 10 from a uniform[0, 5] distribution
+
 prblm1 <-data.frame
   set.seed (504123)
-  x=(rdunif(10, 5, 0))
-  table(x)
-#A logical vector indicating whether elements of the sample are greater than 2
-  z <- "logicalvec"  
-  is.logical(z)
-   as.logical (x[x > 2])
+  rndmsmpl=(rdunif(10, 5, 0))
+  table(rndmsmpl)
+
+  #A logical vector indicating whether elements of the sample are greater than 2
+  
+  grtr2 <- "logicalvec"  
+  is.logical(grtr2)
+   as.logical (rndmsmpl > 2)
+   
 # A (length-10) character vector
- a <- "abcdefghij"
- is.character(a)
- nchar (a)
+ charvect <- "abcdefghij"
+ is.character(charvect)
+ nchar (charvect)
+ 
 #A (length-10) factor vector
- degree <- factor(c("mailmanmph"))
-# Try to take the mean of each variable in your dataframe
-  mean (x)
-  mean (degree)
-  mean (z)
-  mean (a)
-#Only the mean of x and z can be taken, as they are the only numeric    #variables
-#Write a code chunk that applies the as.numeric function to the        logical, character, and factor variables (please show this chunk     but not the output)
-  as.numeric (degree)
-  as.numeric (a)
-  as.numeric (z)
-#convert your character variable from character to factor to numeric; similarly, convert your factor variable from factor to character to numeric. 
+ factorvec <- factor(c("jihgfedcba"))
+ factorvec
+
+ # Try to take the mean of each variable in your dataframe
+  mean (rndmsmpl)
+  mean (grtr2)
+  mean (charvect)
+  mean (factorvec)
+  
+#Only the mean of rndmsmpl can be taken, as it is the only numeric    #vector (see output)
+
 ```
 ```{r}
-##Problem 2
+
+#Write a code chunk that applies the as.numeric function to the        logical, character, and factor variables (please show this chunk   but not the output)
+  
+  grtr2num <-as.numeric (grtr2)
+  
+  charvectnum <-as.numeric (charvect) 
+  
+  factorvecnum <-as.numeric (factorvec)  
+`````
+ 
+```{r}
+#convert your character variable from character to factor to numeric; similarly, convert your factor variable from factor to character to numeric. 
+  charvec_factor <- as.factor(charvect)
+  charvect_factornum <-as.numeric (charvec_factor) 
+  
+  factorvec_char <- as.character(charvect)
+  factorvect_charnum <-as.numeric (factorvec_char)
+  ##as a numeric variable, both the original charecter and factor variables take the value of 1
+```
+```{r}
+## Problem 2
+
+#Code to clear the environment -
+rm(list=ls())
+
 prblm2 <-data.frame
 #x: a random sample of size 1000 from a standard Normal distribution
   set.seed (1234)
   x <- rnorm(1000)
 #y: a random sample of size 1000 from a standard Normal distribution
   y <- rnorm(1000)
-#z: A logical vector indicating whether the x + y > 0
-  z <- "logicalvec"  
-  is.logical(z)
-  logical (length = 0)
-  as.logical(x + y > 0)
-#A numeric vector created by coercing the above logical vector
-    as.numeric (x + y > 0)
-#A factor vector created by coercing the above logical vector
-  as.factor(x + y > 0)
-#size of dataset
-  dataset1 <- data.frame(x,y, rep = TRUE)
-  dim (dataset)
-# the mean and median of x
-  mean(x)
-  median (x)
-#Make a scatterplot of y vs x 
-ggplot(dataset1, aes(x = x, y = y)) + geom_point()
-
-
-
 ```
 
